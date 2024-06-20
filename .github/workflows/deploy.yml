@@ -1,0 +1,55 @@
+name: Deploy to S3
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18.17.0'
+
+    - name: Install pnpm
+      run: npm install -g pnpm
+
+    - name: Install dependencies
+      run: pnpm install
+
+    - name: Build project and export static site
+      run: pnpm build
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v3
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1
+
+    - name: Deploy CloudFormation stack
+      run: |
+        aws cloudformation deploy \
+          --template-file s3-static-site.yml \
+          --stack-name my-certifications-site \
+          --capabilities CAPABILITY_NAMED_IAM \
+          --parameter-overrides StackName=my-certifications-site
+
+    - name: Wait for CloudFormation stack to complete
+      run: |
+        aws cloudformation wait stack-create-complete --stack-name my-certifications-site
+
+    - name: Sync S3 bucket
+      run: |
+        BUCKET_NAME=$(aws cloudformation describe-stacks --stack-name my-certifications-site --query "Stacks[0].Outputs[?OutputKey=='BucketName'].OutputValue" --output text)
+        aws s3 sync ./out s3://$BUCKET_NAME --delete
+        WEBSITE_URL=$(aws cloudformation describe-stacks --stack-name my-certifications-site --query "Stacks[0].Outputs[?OutputKey=='WebsiteURL'].OutputValue" --output text)
+        echo "Website URL: $WEBSITE_URL"

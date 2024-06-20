@@ -1,27 +1,41 @@
-AWSTemplateFormatVersion: "2010-09-09"
+AWSTemplateFormatVersion: '2010-09-09'
+Parameters:
+  StackName:
+    Type: String
+    Description: "The name of the CloudFormation stack, used to name the S3 bucket."
+
 Resources:
   S3Bucket:
-    Type: AWS::S3::Bucket
+    Type: 'AWS::S3::Bucket'
     Properties:
-      BucketName: !Sub "${AWS::StackName}-static-site"
-      AccessControl: PublicRead
+      BucketName: !Sub "${AWS::AccountId}-${AWS::StackName}"
       WebsiteConfiguration:
-        IndexDocument: index.html
-        ErrorDocument: 404.html
-  BucketPolicy:
-    Type: AWS::S3::BucketPolicy
+        IndexDocument: 'index.html'
+        ErrorDocument: '404.html'
+      VersioningConfiguration:
+        Status: Enabled
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: false
+        BlockPublicPolicy: false
+        IgnorePublicAcls: false
+        RestrictPublicBuckets: false
+
+  S3BucketPolicy:
+    Type: 'AWS::S3::BucketPolicy'
     Properties:
       Bucket: !Ref S3Bucket
       PolicyDocument:
-        Version: "2012-10-17"
+        Version: '2012-10-17'
         Statement:
-          - Sid: PublicReadGetObject
-            Effect: Allow
-            Principal: "*"
-            Action: "s3:GetObject"
-            Resource: !Sub "arn:aws:s3:::${S3Bucket}/*"
+          - Effect: Allow
+            Principal: '*'
+            Action: 's3:GetObject'
+            Resource: !Sub "arn:aws:s3:::${AWS::AccountId}-${AWS::StackName}/*"
 
 Outputs:
   WebsiteURL:
-    Description: "URL for website hosted on S3"
+    Description: "URL of the S3 bucket static website"
     Value: !GetAtt S3Bucket.WebsiteURL
+  BucketName:
+    Description: "Name of the S3 bucket"
+    Value: !Ref S3Bucket
