@@ -33,23 +33,24 @@ jobs:
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-east-1
+        aws-region: ap-east-1
 
     - name: Deploy CloudFormation stack
       run: |
         aws cloudformation deploy \
           --template-file s3-static-site.yml \
-          --stack-name my-certifications-site \
+          --region ap-east-1 \
+          --stack-name certifications-site-ap-east-1 \
           --capabilities CAPABILITY_NAMED_IAM \
-          --parameter-overrides StackName=my-certifications-site
+          --parameter-overrides StackName=certifications-site-ap-east-1
 
     - name: Wait for CloudFormation stack to complete
       run: |
-        aws cloudformation wait stack-create-complete --stack-name my-certifications-site
+        aws cloudformation wait stack-create-complete --stack-name certifications-site-ap-east-1
 
     - name: Sync S3 bucket
       run: |
-        BUCKET_NAME=$(aws cloudformation describe-stacks --stack-name my-certifications-site --query "Stacks[0].Outputs[?OutputKey=='BucketName'].OutputValue" --output text)
+        BUCKET_NAME=$(aws cloudformation describe-stacks --stack-name certifications-site-ap-east-1 --query "Stacks[0].Outputs[?OutputKey=='BucketName'].OutputValue" --output text)
         aws s3 sync ./out s3://$BUCKET_NAME --delete
-        WEBSITE_URL=$(aws cloudformation describe-stacks --stack-name my-certifications-site --query "Stacks[0].Outputs[?OutputKey=='WebsiteURL'].OutputValue" --output text)
+        WEBSITE_URL=$(aws cloudformation describe-stacks --stack-name certifications-site-ap-east-1 --query "Stacks[0].Outputs[?OutputKey=='WebsiteURL'].OutputValue" --output text)
         echo "Website URL: $WEBSITE_URL"

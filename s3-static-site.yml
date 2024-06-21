@@ -1,4 +1,4 @@
-AWSTemplateFormatVersion: '2010-09-09'
+AWSTemplateFormatVersion: "2010-09-09"
 Parameters:
   StackName:
     Type: String
@@ -6,14 +6,12 @@ Parameters:
 
 Resources:
   S3Bucket:
-    Type: 'AWS::S3::Bucket'
+    Type: "AWS::S3::Bucket"
     Properties:
       BucketName: !Sub "${AWS::AccountId}-${AWS::StackName}"
       WebsiteConfiguration:
-        IndexDocument: 'index.html'
-        ErrorDocument: '404.html'
-      VersioningConfiguration:
-        Status: Enabled
+        IndexDocument: "index.html"
+        ErrorDocument: "404.html"
       PublicAccessBlockConfiguration:
         BlockPublicAcls: false
         BlockPublicPolicy: false
@@ -21,15 +19,15 @@ Resources:
         RestrictPublicBuckets: false
 
   S3BucketPolicy:
-    Type: 'AWS::S3::BucketPolicy'
+    Type: "AWS::S3::BucketPolicy"
     Properties:
       Bucket: !Ref S3Bucket
       PolicyDocument:
-        Version: '2012-10-17'
+        Version: "2012-10-17"
         Statement:
           - Effect: Allow
-            Principal: '*'
-            Action: 's3:GetObject'
+            Principal: "*"
+            Action: "s3:GetObject"
             Resource: !Sub "arn:aws:s3:::${AWS::AccountId}-${AWS::StackName}/*"
 
 Outputs:

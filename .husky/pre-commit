@@ -1,4 +1,4 @@
 git reset public/certs/thumbnails/*
 ./install_imagemagick.sh
 ./regenerate-thumbnails.sh
-git add .
+git add public/certs/thumbnails
