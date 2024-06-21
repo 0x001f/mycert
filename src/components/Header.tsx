@@ -4,7 +4,7 @@ export function Header() {
       <p>Welcome to my dungeon.</p>
       <p className="flex gap-x-2">
         Go back up to...
-        <a href="https://github.com/chanyatfu" className="inline-block">
+        <a href="https://github.com/0x001f" className="inline-block">
           GitHub
         </a>
         <a
