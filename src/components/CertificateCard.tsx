@@ -11,10 +11,10 @@ export function CertificateCard(props: CertificateCardProps) {
       <img
         src={props.path}
         alt={filename}
-        className="w-fit overflow-hidden rounded-lg hover:scale-[102%] transition-transform hover:ease-out duration-500 cursor-zoom-in"
+        className="w-96 overflow-hidden rounded-lg hover:scale-[102%] transition-transform hover:ease-out duration-500 cursor-zoom-in min-w-32"
         onClick={() => props.setModalPdfPath(`/certs/pdf/${filename}.pdf`)}
       />
-      <div className="font-bold text-center">{filename}</div>
+      <div className="text-sm font-semibold">{filename}</div>
     </div>
   );
 }

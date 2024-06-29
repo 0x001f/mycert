@@ -9,9 +9,9 @@ export default async function Home() {
   });
 
   return (
-    <main>
+    <>
       <Header />
       <CertSection thumbnailPaths={thumbnailPaths} />
-    </main>
+    </>
   );
 }
