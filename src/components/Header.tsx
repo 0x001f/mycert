@@ -8,7 +8,9 @@ const link: Link[] = [
 export function Header() {
   return (
     <header>
-      <h1 className="animate__animated animate__fadeInUp">My Certificates</h1>
+      <h1 className="animate__animated animate__fadeInUp text-5xl md:text-6xl text-wrap max-w-full my-3">
+        My Certificates
+      </h1>
       <div className="links">
         {link.map((entry, index) => (
           <a
