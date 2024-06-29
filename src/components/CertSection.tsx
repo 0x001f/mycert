@@ -13,7 +13,7 @@ export function CertSection(props: CertSectionProps) {
   const [modalPdfPath, setModalPdfPath] = useState<string | null>(null);
 
   return (
-    <main>
+    <>
       <div
         className="max-w-max w-screen grid
         grid-cols-1 md:grid-cols-2 xl:grid-cols-3
@@ -35,6 +35,6 @@ export function CertSection(props: CertSectionProps) {
           document.body,
           modalPdfPath
         )}
-    </main>
+    </>
   );
 }

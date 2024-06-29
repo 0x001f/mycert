@@ -1,6 +1,7 @@
 import { listPublicDir } from "@/utils/listPublicDir";
 import { Header } from "@/components/Header";
 import { CertSection } from "@/components/CertSection";
+import { Footer } from "@/components/Footer";
 
 export default async function Home() {
   const thumbnailPaths = await listPublicDir({
@@ -11,7 +12,10 @@ export default async function Home() {
   return (
     <>
       <Header />
-      <CertSection thumbnailPaths={thumbnailPaths} />
+      <main>
+        <CertSection thumbnailPaths={thumbnailPaths} />
+      </main>
+      <Footer />
     </>
   );
 }
