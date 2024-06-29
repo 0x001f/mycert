@@ -21,7 +21,7 @@ export function CertificateCard(props: CertificateCardProps) {
       <img
         src={props.path}
         alt={filename}
-        className="w-96 overflow-hidden rounded-lg hover:scale-[102%] transition-transform hover:ease-out duration-500 cursor-zoom-in min-w-32"
+        className="w-96 overflow-hidden rounded-lg hover:scale-[101%] transition-transform hover:ease-out duration-500 cursor-zoom-in min-w-32"
         onClick={handleClick}
       />
       <div className="text-sm font-semibold">{filename}</div>
