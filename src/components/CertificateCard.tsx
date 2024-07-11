@@ -3,6 +3,8 @@ export type CertificateCardProps = {
   setModalPdfPath: (imagePath: string | null) => void;
 };
 
+
+
 export function CertificateCard(props: CertificateCardProps) {
   const filename = props.path.split("/").pop()?.split(".").shift();
 
