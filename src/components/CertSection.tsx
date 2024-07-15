@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import { createPortal } from "react-dom";
 import { CertModal } from "./CertModal";
 import { CertificateCard } from "./CertificateCard";
 import styles from "./CertSection.module.scss";

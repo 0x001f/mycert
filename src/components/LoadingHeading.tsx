@@ -2,7 +2,7 @@
 import styles from "./LoadingHeading.module.scss";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { createElement, FC, useRef } from "react";
+import { createElement, useRef } from "react";
 
 export type LoadingHeadingProps = {
   children?: React.ReactNode | string;
