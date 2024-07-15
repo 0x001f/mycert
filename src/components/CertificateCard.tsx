@@ -1,3 +1,6 @@
+import { isUserAgentMobile } from "@/utils/isMobile";
+import styles from "./CertificateCard.module.scss";
+
 export type CertificateCardProps = {
   path: string;
   setModalPdfPath: (imagePath: string | null) => void;
@@ -7,12 +10,10 @@ export function CertificateCard(props: CertificateCardProps) {
   const filename = props.path.split("/").pop()?.split(".").shift();
 
   const handleClick = () => {
-    const isDesktop = !/Mobi|Android/i.test(navigator.userAgent);
-
-    if (isDesktop) {
-      props.setModalPdfPath(`/certs/pdf/${filename}.pdf`);
-    } else {
+    if (isUserAgentMobile()) {
       window.open(`/certs/pdf/${filename}.pdf`, "_blank");
+    } else {
+      props.setModalPdfPath(`/certs/pdf/${filename}.pdf`);
     }
   };
 
@@ -21,7 +22,7 @@ export function CertificateCard(props: CertificateCardProps) {
       <img
         src={props.path}
         alt={filename}
-        className="w-96 overflow-hidden rounded-lg hover:scale-[101%] transition-transform hover:ease-out duration-500 cursor-zoom-in min-w-32 hover:rotate-2 transition-transform duration-150 ease-out"
+        className={styles.thumbnail}
         onClick={handleClick}
       />
       <div className="text-sm font-semibold">{filename}</div>

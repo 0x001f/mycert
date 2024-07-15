@@ -1,3 +1,4 @@
+import FadeInUp from "./FadeInUp";
 import styles from "./SocialLinks.module.scss";
 
 export type Link = { title: "GitHub" | "LinkedIn" | "Email"; link: string };
@@ -14,17 +15,15 @@ export function SocialLinks(props: SocialLinksProps) {
   return (
     <div className={styles.links}>
       {link.map((entry, index) => (
-        <a
-          href={entry.link}
-          target="_blank"
+        <FadeInUp
+          delay={index * 0.25 + 1.65}
+          disabled={!props.animateIn}
           key={entry.title}
-          className={
-            props.animateIn ? "animate__animated animate__fadeInUp" : ""
-          }
-          style={{ animationDelay: `${index * 0.25 + 1.65}s` }}
         >
-          {entry.title}
-        </a>
+          <a href={entry.link} target="_blank">
+            {entry.title}
+          </a>
+        </FadeInUp>
       ))}
     </div>
   );

@@ -1,5 +1,4 @@
 "use client";
-import clsx from "clsx";
 import styles from "./LoadingHeading.module.scss";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -10,7 +9,7 @@ export type LoadingHeadingProps = {
   type?: Parameters<typeof createElement>[0];
 };
 export default function LoadingHeading({
-  type = "div",
+  type = "h1",
   children,
 }: LoadingHeadingProps) {
   const headingRef = useRef<HTMLHeadingElement>(null);
@@ -40,10 +39,7 @@ export default function LoadingHeading({
     type,
     {
       ref: headingRef,
-      className: clsx(
-        "relative text-5xl md:text-6xl text-wrap max-w-full my-3 z-20 mix-blend-exclusion invert dark:invert-0",
-        styles.heading
-      ),
+      className: styles.heading,
     } as Parameters<typeof createElement>[1],
     children
   );

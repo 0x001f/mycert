@@ -1,9 +1,10 @@
 "use client";
-
 import { useState } from "react";
 import { createPortal } from "react-dom";
 import { CertModal } from "./CertModal";
 import { CertificateCard } from "./CertificateCard";
+import styles from "./CertSection.module.scss";
+import FadeInUp from "./FadeInUp";
 
 export type CertSectionProps = {
   thumbnailPaths: string[];
@@ -14,27 +15,19 @@ export function CertSection(props: CertSectionProps) {
 
   return (
     <>
-      <div
-        className="max-w-max w-screen grid
-        grid-cols-1 md:grid-cols-2 xl:grid-cols-3
-        gap-8 p-4 gap-y-16 mx-auto"
-      >
+      <div className={styles.container}>
         {props.thumbnailPaths.map((path, index) => (
-          <div
-            key={path}
-            className="animate__animated animate__fadeInUp"
-            style={{ animationDelay: `${index * 0.1 + 1.65}s` }}
-          >
+          <FadeInUp key={path} delay={index * 0.1 + 1.65}>
             <CertificateCard path={path} setModalPdfPath={setModalPdfPath} />
-          </div>
+          </FadeInUp>
         ))}
       </div>
-      {modalPdfPath &&
-        createPortal(
-          <CertModal pdfPath={modalPdfPath} setPdfPath={setModalPdfPath} />,
-          document.body,
-          modalPdfPath
-        )}
+      {createPortal(
+        modalPdfPath ? (
+          <CertModal pdfPath={modalPdfPath} setPdfPath={setModalPdfPath} />
+        ) : null,
+        document.body
+      )}
     </>
   );
 }

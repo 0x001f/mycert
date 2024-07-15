@@ -1,0 +1,13 @@
+.thumbnail {
+  width: 24rem;
+  min-width: 8rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: transform 200ms ease;
+
+  &:hover {
+    transform: scale(1.01) rotate(2deg);
+  }
+
+  cursor: zoom-in;
+}

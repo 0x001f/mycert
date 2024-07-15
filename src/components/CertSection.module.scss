@@ -1,0 +1,22 @@
+@use "@/app/responsive.scss" as *;
+
+.container {
+  width: 100vw;
+  max-width: max-content;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem;
+  gap: 2rem;
+  row-gap: 4rem;
+
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+
+  @include md-screen {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include xl-screen {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
