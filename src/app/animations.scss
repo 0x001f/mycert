@@ -3,32 +3,22 @@ body {
   --page-in-animation-duration: 0.1s;
 }
 
-@keyframes slideUpFromPageCenter {
-  from {
-    transform: translateY(calc(50vh - 7rem));
-    pointer-events: none;
-  }
-
-  to {
-    transform: translateY(0);
-    pointer-events: unset;
-  }
-}
-
 .pageLoadHeaderTransition {
   animation: fadeIn 0.5s 0.2s,
     slideUpFromPageCenter var(--page-in-animation-duration)
       var(--page-in-animation-delay);
   animation-fill-mode: both;
-}
 
-@keyframes curtainUp {
-  from {
-    transform: scaleY(1);
-  }
+  @keyframes slideUpFromPageCenter {
+    from {
+      transform: translateY(calc(50vh - 7rem));
+      pointer-events: none;
+    }
 
-  to {
-    transform: scaleY(0);
+    to {
+      transform: translateY(0);
+      pointer-events: unset;
+    }
   }
 }
 
@@ -37,4 +27,14 @@ body {
     var(--page-in-animation-delay);
   animation-fill-mode: both;
   transform-origin: top;
+
+  @keyframes curtainUp {
+    from {
+      transform: scaleY(1);
+    }
+
+    to {
+      transform: scaleY(0);
+    }
+  }
 }

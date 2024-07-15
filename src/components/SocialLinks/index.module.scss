@@ -1,0 +1,25 @@
+.links {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  width: fit-content;
+  font-size: 0.8rem;
+}
+
+.links a {
+  color: var(--black-color);
+  font-weight: 500;
+
+  @media (prefers-color-scheme: dark) {
+    color: #c8cacc;
+  }
+
+  &:hover {
+    color: #676767;
+    transition: color 0.15s ease-out;
+
+    @media (prefers-color-scheme: dark) {
+      color: #dde0e3;
+    }
+  }
+}

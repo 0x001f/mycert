@@ -1,3 +1,5 @@
+import styles from "./index.module.scss";
+
 export type Link = { title: "GitHub" | "LinkedIn" | "Email"; link: string };
 export const link: Link[] = [
   { title: "GitHub", link: "https://github.com/0x001f" },
@@ -10,13 +12,15 @@ type SocialLinksProps = {
 };
 export function SocialLinks(props: SocialLinksProps) {
   return (
-    <div className="links">
+    <div className={styles.links}>
       {link.map((entry, index) => (
         <a
           href={entry.link}
           target="_blank"
           key={entry.title}
-          className={props.animateIn ? "animate__animated animate__fadeInUp" : ""}
+          className={
+            props.animateIn ? "animate__animated animate__fadeInUp" : ""
+          }
           style={{ animationDelay: `${index * 0.25 + 1.1}s` }}
         >
           {entry.title}
