@@ -16,10 +16,8 @@ export function SocialLinks(props: SocialLinksProps) {
           href={entry.link}
           target="_blank"
           key={entry.title}
-          className={`${
-            props.animateIn && "animate__animated"
-          } animate__fadeInUp`}
-          style={{ animationDelay: `${index * 0.25}s` }}
+          className={props.animateIn ? "animate__animated animate__fadeInUp" : ""}
+          style={{ animationDelay: `${index * 0.25 + 1.1}s` }}
         >
           {entry.title}
         </a>

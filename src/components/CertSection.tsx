@@ -23,7 +23,7 @@ export function CertSection(props: CertSectionProps) {
           <div
             key={path}
             className="animate__animated animate__fadeInUp"
-            style={{ animationDelay: `${index * 0.1}s` }}
+            style={{ animationDelay: `${index * 0.1 + 1.1}s` }}
           >
             <CertificateCard path={path} setModalPdfPath={setModalPdfPath} />
           </div>

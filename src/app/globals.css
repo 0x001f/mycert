@@ -117,6 +117,22 @@ body {
   min-height: 100vh;
 }
 
+.loadingCurtain {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: calc(100vh + 20%);
+  border-radius: 0 0 100% 100% / 20%;
+  background-color: #1a1a1a;
+  cursor: progress;
+}
+
+@media (prefers-color-scheme: dark) {
+  .loadingCurtain {
+    background-color: #eceef0;
+  }
+}
+
 /* @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
