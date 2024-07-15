@@ -5,6 +5,7 @@ import { CertModal } from "./CertModal";
 import { CertificateCard } from "./CertificateCard";
 import styles from "./CertSection.module.scss";
 import FadeInUp from "./FadeInUp";
+import { createPortalAtBody } from "@/utils/createPortalAtBody";
 
 export type CertSectionProps = {
   thumbnailPaths: string[];
@@ -22,11 +23,10 @@ export function CertSection(props: CertSectionProps) {
           </FadeInUp>
         ))}
       </div>
-      {createPortal(
+      {createPortalAtBody(
         modalPdfPath ? (
           <CertModal pdfPath={modalPdfPath} setPdfPath={setModalPdfPath} />
-        ) : null,
-        document.body
+        ) : null
       )}
     </>
   );
