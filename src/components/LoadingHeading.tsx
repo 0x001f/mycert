@@ -3,9 +3,16 @@ import clsx from "clsx";
 import styles from "./LoadingHeading.module.scss";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { useRef } from "react";
+import { createElement, FC, useRef } from "react";
 
-export default function LoadingHeading() {
+export type LoadingHeadingProps = {
+  children?: React.ReactNode | string;
+  type?: Parameters<typeof createElement>[0];
+};
+export default function LoadingHeading({
+  type = "div",
+  children,
+}: LoadingHeadingProps) {
   const headingRef = useRef<HTMLHeadingElement>(null);
 
   useGSAP(() => {
@@ -13,7 +20,7 @@ export default function LoadingHeading() {
     const headingRect = headingRef.current!.getBoundingClientRect();
 
     gsap.set(headingRef.current, {
-      y: halfViewportHeight - headingRect.top - headingRect.height / 2 - 8,
+      y: halfViewportHeight - headingRect.top - headingRect.height / 2 - 16,
     });
 
     gsap.to(headingRef.current, {
@@ -29,15 +36,15 @@ export default function LoadingHeading() {
     });
   }, []);
 
-  return (
-    <h1
-      ref={headingRef}
-      className={clsx(
+  return createElement(
+    type,
+    {
+      ref: headingRef,
+      className: clsx(
         "relative text-5xl md:text-6xl text-wrap max-w-full my-3 z-20 mix-blend-exclusion invert dark:invert-0",
         styles.heading
-      )}
-    >
-      My Certificates
-    </h1>
+      ),
+    } as Parameters<typeof createElement>[1],
+    children
   );
 }
