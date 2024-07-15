@@ -2,9 +2,9 @@ import styles from "./SocialLinks.module.scss";
 
 export type Link = { title: "GitHub" | "LinkedIn" | "Email"; link: string };
 export const link: Link[] = [
-  { title: "GitHub", link: "https://github.com/0x001f" },
+  { title: "GitHub", link: "https://github.com/0xc1fa" },
   { title: "LinkedIn", link: "https://www.linkedin.com/in/yatfuchan" },
-  { title: "Email", link: "mailto:yfchan.career@gmail.com" },
+  { title: "Email", link: "mailto:career@yfchan.me" },
 ];
 
 type SocialLinksProps = {
