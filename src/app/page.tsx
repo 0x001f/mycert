@@ -3,6 +3,7 @@ import { Header } from "@/components/Header";
 import { CertSection } from "@/components/CertSection";
 import { Footer } from "@/components/Footer";
 import LoadingHeading from "@/components/LoadingHeading";
+import DownloadZip from "@/utils/downloadZip";
 
 export default async function Home() {
   const thumbnailPaths = await listPublicDir({
@@ -10,9 +11,14 @@ export default async function Home() {
     suffix: "jpg",
   });
 
+  const pdfPaths = await listPublicDir({
+    subpath: ["certs", "pdf"],
+    suffix: "pdf",
+  });
+
   return (
     <>
-      <Header />
+      <Header pdfLinks={pdfPaths} />
       <main>
         <CertSection thumbnailPaths={thumbnailPaths} />
       </main>
