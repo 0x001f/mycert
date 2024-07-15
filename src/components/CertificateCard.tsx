@@ -3,8 +3,6 @@ export type CertificateCardProps = {
   setModalPdfPath: (imagePath: string | null) => void;
 };
 
-
-
 export function CertificateCard(props: CertificateCardProps) {
   const filename = props.path.split("/").pop()?.split(".").shift();
 
@@ -23,7 +21,7 @@ export function CertificateCard(props: CertificateCardProps) {
       <img
         src={props.path}
         alt={filename}
-        className="w-96 overflow-hidden rounded-lg hover:scale-[101%] transition-transform hover:ease-out duration-500 cursor-zoom-in min-w-32"
+        className="w-96 overflow-hidden rounded-lg hover:scale-[101%] transition-transform hover:ease-out duration-500 cursor-zoom-in min-w-32 hover:rotate-2 transition-transform duration-150 ease-out"
         onClick={handleClick}
       />
       <div className="text-sm font-semibold">{filename}</div>
