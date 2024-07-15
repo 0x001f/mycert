@@ -6,8 +6,23 @@
   border-radius: 0 0 100% 100% / 20%;
   background-color: #1a1a1a;
   cursor: progress;
+  z-index: 10;
 
   @media (prefers-color-scheme: dark) {
     background-color: #eceef0;
+  }
+
+  animation: curtainUp 1s 1.5s;
+  animation-fill-mode: both;
+  transform-origin: top;
+
+  @keyframes curtainUp {
+    from {
+      transform: scaleY(1);
+    }
+
+    to {
+      transform: scaleY(0);
+    }
   }
 }

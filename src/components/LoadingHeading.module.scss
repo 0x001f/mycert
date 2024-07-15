@@ -1,0 +1,16 @@
+.heading {
+  opacity: 0;
+  animation: slideUpFromPageCenter 1s 1.5s;
+  animation-fill-mode: both;
+
+  @keyframes slideUpFromPageCenter {
+    0% {
+      pointer-events: none;
+    }
+
+    100% {
+      transform: translateY(0);
+      pointer-events: unset;
+    }
+  }
+}

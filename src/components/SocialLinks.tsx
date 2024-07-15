@@ -1,4 +1,4 @@
-import styles from "./index.module.scss";
+import styles from "./SocialLinks.module.scss";
 
 export type Link = { title: "GitHub" | "LinkedIn" | "Email"; link: string };
 export const link: Link[] = [
@@ -21,7 +21,7 @@ export function SocialLinks(props: SocialLinksProps) {
           className={
             props.animateIn ? "animate__animated animate__fadeInUp" : ""
           }
-          style={{ animationDelay: `${index * 0.25 + 1.1}s` }}
+          style={{ animationDelay: `${index * 0.25 + 1.65}s` }}
         >
           {entry.title}
         </a>
