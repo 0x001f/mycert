@@ -19,7 +19,7 @@ export default function LoadingHeading({
     const headingRect = headingRef.current!.getBoundingClientRect();
 
     gsap.set(headingRef.current, {
-      y: halfViewportHeight - headingRect.top - headingRect.height / 2 - 16,
+      y: halfViewportHeight - headingRect.top - headingRect.height / 2,
     });
 
     gsap.set("body", {
@@ -32,15 +32,10 @@ export default function LoadingHeading({
     });
 
     gsap.to(headingRef.current, {
-      y: halfViewportHeight - headingRect.top - headingRect.height / 2,
-      duration: 0.3,
-      ease: "power2.out",
-    });
-
-    gsap.to(headingRef.current, {
       opacity: 1,
-      duration: 1.1,
-      ease: "power2.out",
+      duration: 1.2,
+      delay: 0.3,
+      ease: "power1.out",
     });
   }, []);
 
