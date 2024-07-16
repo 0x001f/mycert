@@ -4,10 +4,15 @@
   border-radius: 0.5rem;
   overflow: hidden;
   transition: transform 200ms ease;
+  cursor: zoom-in;
 
   &:hover {
     transform: scale(1.01) rotate(2deg);
   }
 
-  cursor: zoom-in;
+  @media (hover: none) and (pointer: coarse) {
+    &:hover {
+      transform: none;
+    }
+  }
 }
