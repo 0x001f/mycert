@@ -22,6 +22,15 @@ export default function LoadingHeading({
       y: halfViewportHeight - headingRect.top - headingRect.height / 2 - 16,
     });
 
+    gsap.set("body", {
+      overflow: "hidden",
+    });
+
+    gsap.set("body", {
+      overflow: "unset",
+      delay: 1.5,
+    });
+
     gsap.to(headingRef.current, {
       y: halfViewportHeight - headingRect.top - headingRect.height / 2,
       duration: 0.3,
