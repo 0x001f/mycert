@@ -1,4 +1,5 @@
 "use client";
+import { downloadAllAsZip } from "@/utils/downloadZip";
 import FadeInUp from "./FadeInUp";
 import styles from "./SocialLinks.module.scss";
 
@@ -6,18 +7,22 @@ export type Link =
   | { title: string; link: string; type: "link" }
   | { title: string; callback: () => void; type: "action" };
 
-type SocialLinksProps = {
+type HeaderLinksProps = {
   animateIn?: boolean;
+  pdfLinks: string[];
 };
-export function SocialLinks(props: SocialLinksProps) {
+export function HeaderLinks(props: HeaderLinksProps) {
   const link: Link[] = [
-    { title: "GitHub", link: "https://github.com/0xc1fa", type: "link" },
     {
-      title: "LinkedIn",
-      link: "https://www.linkedin.com/in/yatfuchan",
+      title: "Download ZIP",
+      callback: async () => await downloadAllAsZip(props.pdfLinks),
+      type: "action",
+    },
+    {
+      title: "Source Code",
+      link: "https://github.com/0xc1fa/certifications.yfchan.me",
       type: "link",
     },
-    { title: "Email", link: "mailto:career@yfchan.me", type: "link" },
   ];
 
   return (
