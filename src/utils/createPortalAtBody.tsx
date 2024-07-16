@@ -1,10 +1,10 @@
-import { createPortal } from "react-dom";
+import { createPortal } from "react-dom"
 
 export function createPortalAtBody(
-  children: React.ReactNode,
-  key?: null | string
+	children: React.ReactNode,
+	key?: null | string
 ) {
-  if (typeof window === "undefined") return null;
+	if (typeof window === "undefined") return null
 
-  return createPortal(children, document.body, key);
+	return createPortal(children, document.body, key)
 }

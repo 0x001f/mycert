@@ -1,24 +1,23 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.scss";
-import "./animations.scss";
-import "animate.css";
+import type { Metadata } from "next"
+import { Inter } from "next/font/google"
+import "./globals.scss"
+import "animate.css"
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Chan Yat Fu's certificates",
-  description: "My certificates.",
-};
+	title: "Chan Yat Fu's certificates",
+	description: "My certificates.",
+}
 
 export default function RootLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode
 }>) {
-  return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
-  );
+	return (
+		<html lang="en">
+			<body className={inter.className}>{children}</body>
+		</html>
+	)
 }

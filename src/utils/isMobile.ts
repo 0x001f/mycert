@@ -1,2 +1,1 @@
-export const isUserAgentMobile = () =>
-  /Mobi|Android/i.test(navigator.userAgent);
+export const isUserAgentMobile = () => /Mobi|Android/i.test(navigator.userAgent)

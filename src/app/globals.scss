@@ -3,52 +3,52 @@
 @tailwind utilities;
 
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 :root {
-  --black-color: #152838;
-  background-color: #fff;
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  width: 100vw;
+	--black-color: #152838;
+	background-color: #fff;
+	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	line-height: 1.5;
+	font-weight: 400;
+	width: 100vw;
 
-  color-scheme: light dark;
-  color: var(--black-color);
+	color-scheme: light dark;
+	color: var(--black-color);
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  cursor: default;
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	cursor: default;
 }
 
 body {
-  display: grid;
-  grid-template-rows: auto minmax(auto, 1fr) auto;
-  min-height: 100dvh;
-  background-image: linear-gradient(135deg, #f5f7faaa 0%, #c3cfe288 100%);
-  margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
-  overflow: hidden;
+	display: grid;
+	grid-template-rows: auto minmax(auto, 1fr) auto;
+	min-height: 100dvh;
+	background-image: linear-gradient(135deg, #f5f7faaa 0%, #c3cfe288 100%);
+	margin: 0;
+	min-width: 320px;
+	min-height: 100vh;
+	overflow: hidden;
 
-  @media (prefers-color-scheme: dark) {
-    background-color: #18191b;
-    background-image: none;
-    color: #eceef0;
-  }
+	@media (prefers-color-scheme: dark) {
+		background-color: #18191b;
+		background-image: none;
+		color: #eceef0;
+	}
 }
 
 header {
-  padding: 5rem 0;
+	padding: 5rem 0;
 }
 
 h1 {
-  text-align: center;
-  font-weight: 700;
-  font-size: 3.5em;
+	text-align: center;
+	font-weight: 700;
+	font-size: 3.5em;
 }
 
 h1,
@@ -57,5 +57,5 @@ h3,
 h4,
 h5,
 h6 {
-  letter-spacing: -0.2rem;
+	letter-spacing: -0.2rem;
 }

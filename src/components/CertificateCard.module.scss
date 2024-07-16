@@ -1,18 +1,18 @@
 .thumbnail {
-  width: 24rem;
-  min-width: 8rem;
-  border-radius: 0.5rem;
-  overflow: hidden;
-  transition: transform 75ms ease-out;
-  cursor: zoom-in;
+	width: 24rem;
+	min-width: 8rem;
+	border-radius: 0.5rem;
+	overflow: hidden;
+	transition: transform 75ms ease-out;
+	cursor: zoom-in;
 
-  &:hover {
-    transform: scale(1.01) rotate(2deg);
-  }
+	&:hover {
+		transform: scale(1.01) rotate(2deg);
+	}
 
-  @media (hover: none) and (pointer: coarse) {
-    &:hover {
-      transform: none;
-    }
-  }
+	@media (hover: none) and (pointer: coarse) {
+		&:hover {
+			transform: none;
+		}
+	}
 }

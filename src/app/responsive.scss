@@ -1,11 +1,11 @@
 @mixin md-screen {
-  @media screen and (min-width: 768px) {
-    @content;
-  }
+	@media screen and (min-width: 768px) {
+		@content;
+	}
 }
 
 @mixin xl-screen {
-  @media screen and (min-width: 1280px) {
-    @content;
-  }
+	@media screen and (min-width: 1280px) {
+		@content;
+	}
 }
