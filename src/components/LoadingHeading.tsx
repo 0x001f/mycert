@@ -39,12 +39,17 @@ export default function LoadingHeading({
 		})
 	}, [])
 
-	return createElement(
-		type,
-		{
-			ref: headingRef,
-			className: styles.heading,
-		} as Parameters<typeof createElement>[1],
-		children
+	return (
+		<>
+			<div className={styles.curtain} />
+			{createElement(
+				type,
+				{
+					ref: headingRef,
+					className: styles.heading,
+				} as Parameters<typeof createElement>[1],
+				children
+			)}
+		</>
 	)
 }
